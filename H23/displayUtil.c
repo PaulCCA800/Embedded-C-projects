@@ -3,13 +3,13 @@
 volatile uint8_t flag = 0;
 volatile uint8_t flagCapt = 0;
 
-float flow_rate;
-float water_consumed;
-float temp;
-float count;
-float lastCount;
-float sample;
-float lastSample;
+volatile float flow_rate;
+volatile float water_consumed;
+volatile float temp;
+volatile float count;
+volatile float lastCount;
+volatile float sample;
+volatile float lastSample;
 
 void initInput(void){
     DDRE &= ~(1 << DDE0);
@@ -29,7 +29,7 @@ void sensOn(void){
 
 void sensOff(void){
     ACSR &= ~(1 << ACIE);
-    PORTA &= ~(1 << PA0s);
+    PORTA &= ~(1 << PA0);
 }
 
 void initAComp(void){
